@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message Error {
+    string type = 1;
+    string charge_id = 2;
+    string message = 3;
+    string http_status_code = 4;
+    string decline_code = 5;
+    string param = 6;
+    string request_id =7 ;
+}
