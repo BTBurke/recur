@@ -7,11 +7,13 @@ import (
 	stripe "github.com/stripe/stripe-go"
 
 	"github.com/BTBurke/recur/pb"
+	log "github.com/sirupsen/logrus"
 	context "golang.org/x/net/context"
 )
 
 type StripePlanClient struct {
-	Key string
+	Key    string
+	Logger log.StdLogger
 }
 
 func (p *StripePlanClient) Create(ctx context.Context, req *pb.CreatePlanRequest) (*pb.PlanResponse, error) {
