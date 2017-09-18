@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/BTBurke/recur/backend"
+	"github.com/BTBurke/recur/backend/stripe"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -31,7 +31,6 @@ type Client struct {
 	Key     string
 	Backend ClientType
 	Timeout time.Duration
-	Retry   bool
 	Logger  *log.Logger
 
 	Plan *PlanClient
@@ -83,7 +82,7 @@ func newClient(service ClientType, key string, run runMode, opts ...ClientOption
 
 	switch service {
 	case StripeClient:
-		c.Plan = &PlanClient{backend: backend.NewStripePlanClient(key, c.Logger)}
+		c.Plan = &PlanClient{backend: stripe.NewPlanClient(key, c.Logger)}
 		return c, nil
 	default:
 		return nil, fmt.Errorf("unknown backend service")

@@ -1,11 +1,38 @@
 syntax = "proto3";
 
+enum ErrorType {
+    Unknown = 0;
+    API = 1;
+    APIConnection = 2;
+    Authentication = 3;
+    Card = 4;
+    InvalidRequest = 5;
+    Permission = 6;
+    RateLimit = 7;
+}
+
+enum CardErrors {
+    None = 0;
+    IncorrectNumber = 1;
+    InvalidNumber = 2;
+    InvalidExpirationMonth = 3;
+    InvalidExpirationYear = 4;
+    InvalidCvc = 5;
+    Expired = 6;
+    IncorrectCvc = 7;
+    IncorrectZip = 8;
+    Declined = 9;
+    ProcessingError = 10;
+    RateLimited = 11;
+    Missing = 12;
+}
+
 message Error {
-    string type = 1;
+    ErrorType type = 1;
     string charge_id = 2;
     string message = 3;
-    string http_status_code = 4;
-    string decline_code = 5;
+    int32 http_status_code = 4;
+    CardErrors code = 5;
     string param = 6;
-    string request_id =7 ;
+    string request_id = 7;
 }

@@ -12,14 +12,15 @@ It is generated from these files:
 It has these top-level messages:
 	Error
 	PlanResponse
-	PlanSuccess
+	Plan
 	CreatePlanRequest
 	GetPlanRequest
 	UpdatePlanRequest
 	DeletePlanRequest
+	DeletePlanSuccess
 	DeletePlanResponse
 	ListFilter
-	ListRequest
+	ListPlansRequest
 */
 package pb
 
